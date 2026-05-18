@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="STROBE-MetEpi: Reporting guidelines for Metabolomic Epidemiology." />
+  <title>STROBE-MetEpi | Reporting Guidelines for Metabolomic Epidemiology</title>
+  <style>
+    :root{
+      --red:#d71920;
+      --red-dark:#a80f16;
+      --ink:#17202a;
+      --muted:#5f6b7a;
+      --line:#e6e9ee;
+      --soft:#f7f8fa;
+      --blue:#e8f4ff;
+      --peach:#fff0e7;
+      --max:1160px;
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:white;line-height:1.55}
+    a{color:var(--red-dark);text-decoration:none} a:hover{text-decoration:underline}
+    .container{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+    .site-header{background:white;border-bottom:1px solid var(--line)}
+    .banner-wrap{padding:14px 20px 8px}
+    .topbar{background:white;border-top:0;border-bottom:1px solid var(--line)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:68px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+    .brand-mark{width:42px;height:42px;border-radius:12px;background:var(--red);color:white;display:grid;place-items:center;font-weight:900;line-height:1}
+    .nav-links{display:flex;align-items:center;gap:42px;font-size:16px}.nav-links a{color:#29313b;font-weight:600;padding:22px 0;white-space:nowrap}.nav-links a.active{color:var(--red);border-bottom:4px solid var(--red)}
+    .search{display:flex;align-items:center;border:1px solid var(--line);border-radius:8px;background:white;overflow:hidden}.search input{border:0;outline:0;padding:10px 12px;font:inherit;min-width:220px}.search button{border:0;background:white;padding:8px 12px;font-size:24px;line-height:1;color:#29313b;cursor:pointer}
+    .button{display:inline-flex;align-items:center;justify-content:center;padding:11px 16px;border-radius:999px;border:1px solid var(--red);background:var(--red);color:white;font-weight:700;box-shadow:0 10px 24px rgba(215,25,32,.18)}
+    .button.secondary{background:white;color:var(--red-dark);box-shadow:none}
+
+    .hero{padding:34px 0 34px;border-top:0}
+    .banner{width:100%;height:auto;display:block;margin:0;filter:none}
+    .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:center}
+    .eyebrow{color:var(--red-dark);font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:13px;margin-bottom:12px}
+    h1{margin:0 0 18px;font-size:clamp(38px,6vw,68px);line-height:.98;letter-spacing:-.055em}
+    .lead{font-size:clamp(18px,2vw,22px);color:var(--muted);max-width:760px;margin:0 0 26px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .hero-card{background:linear-gradient(180deg,#fff,#f9fafb);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:0 20px 50px rgba(23,32,42,.08)}
+    .hero-card h2{margin-top:0;font-size:22px}.hero-card ul{padding-left:20px;margin-bottom:0}
+
+    section{padding:64px 0;border-top:1px solid var(--line)}
+    section h2{font-size:clamp(28px,3vw,42px);line-height:1.08;margin:0 0 18px;letter-spacing:-.035em}
+    section p{color:var(--muted);font-size:17px}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
+    .card{background:white;border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:0 10px 30px rgba(23,32,42,.05)}
+    .card h3{margin:0 0 8px;font-size:20px}.card p,.card li{font-size:15.5px}.card ul{padding-left:18px;margin-bottom:0;color:var(--muted)}
+
+    .workflow{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:28px}
+    .step{border-radius:18px;padding:16px;min-height:140px;border:1px solid rgba(0,0,0,.06)}
+    .step:nth-child(odd){background:var(--blue)}.step:nth-child(even){background:var(--peach)}
+    .step b{display:block;font-size:13px;color:var(--red-dark);margin-bottom:8px}.step h3{margin:0 0 8px;font-size:16px;line-height:1.2}.step p{margin:0;font-size:14px;color:#3e4a57}
+
+    .checklist-wrap{margin-top:28px;overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:white}
+    table{width:100%;border-collapse:collapse;min-width:860px}th,td{padding:14px 16px;vertical-align:top;border-bottom:1px solid var(--line);text-align:left;font-size:15px}th{background:#f0f2f5;color:#29313b}
+    tr.title-abstract td,tr.methods td,tr.discussion td{background:var(--blue)}tr.introduction td,tr.results td,tr.other td{background:var(--peach)}
+    .downloads{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:28px}.download-card{display:flex;flex-direction:column;justify-content:space-between;gap:18px;min-height:210px;padding:24px;border-radius:var(--radius);border:1px solid var(--line);background:var(--soft)}.download-card h3{margin:0 0 8px;font-size:22px}.download-card p{margin:0;font-size:16px}
+    .notice{background:#fff7f7;border:1px solid #f2c4c6;border-left:6px solid var(--red);padding:18px 20px;border-radius:16px;color:#3e4a57;margin-top:28px}
+    .footer{background:#121820;color:white;padding:46px 0}.footer p{color:#c9d1dc;margin:8px 0 0}.footer a{color:white;text-decoration:underline}
+    @media(max-width:900px){.hero-grid,.cards,.downloads{grid-template-columns:1fr}.workflow{grid-template-columns:repeat(2,1fr)}.nav{align-items:flex-start;flex-direction:column;padding:14px 0}.nav-links{flex-wrap:wrap}}
+    @media(max-width:560px){.workflow{grid-template-columns:1fr}.nav-links{display:none}.container{padding:0 18px}section{padding:48px 0}}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="banner-wrap">
+      <svg class="banner" viewBox="0 0 2048 318" role="img" aria-labelledby="banner-title banner-desc" xmlns="http://www.w3.org/2000/svg">
+        <title id="banner-title">STROBE-MetEpi</title>
+        <desc id="banner-desc">Reporting Guidelines for Metabolomic Epidemiology</desc>
+        <defs>
+          <linearGradient id="redGradient" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#e21b23"/>
+            <stop offset="1" stop-color="#c9131b"/>
+          </linearGradient>
+        </defs>
+        <rect x="18" y="12" width="2012" height="286" rx="16" fill="url(#redGradient)"/>
+
+        <!-- Full logo: molecular structure plus tick -->
+        <g transform="translate(194 51)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round">
+          <g stroke-width="8">
+            <path d="M40 92 L96 58 L152 92 L152 156 L96 190 L40 156 Z"/>
+            <path d="M96 58 L96 28"/>
+            <path d="M152 92 L182 76"/>
+            <path d="M152 156 L182 174"/>
+            <path d="M40 156 L18 174"/>
+            <path d="M18 174 L18 202"/>
+            <circle cx="96" cy="28" r="12" fill="#fff" stroke="none"/>
+            <circle cx="182" cy="76" r="12" fill="#fff" stroke="none"/>
+            <circle cx="182" cy="174" r="12" fill="#fff" stroke="none"/>
+            <circle cx="18" cy="174" r="12" fill="#fff" stroke="none"/>
+            <circle cx="18" cy="202" r="12" fill="#fff" stroke="none"/>
+          </g>
+          <path d="M224 148 L254 178 L312 110" stroke="#fff" stroke-width="14" stroke-linecap="square" stroke-linejoin="miter"/>
+        </g>
+
+        <text x="560" y="156" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="88" font-weight="800" letter-spacing="-2">STROBE-MetEpi</text>
+        <text x="566" y="235" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="43" font-weight="400">Reporting Guidelines for Metabolomic Epidemiology</text>
+      </svg>
+    </div>
+
+    <div class="topbar">
+      <div class="container nav">
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a class="active" href="#top">Home</a><a href="#about">About</a><a href="#checklist">Checklist</a><a href="#resources">E &amp; E</a><a href="#scope">Scope</a><a href="#resources">Resources</a><a href="#community">News</a><a href="#community">Community</a><a href="#community">Contact</a>
+        </nav>
+        <form class="search" role="search"><input type="search" placeholder="Search site..." aria-label="Search site"><button type="submit" aria-label="Search">⌕</button></form>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow">A STROBE extension</div>
+            <h1>Transparent reporting for metabolomic epidemiology.</h1>
+            <p class="lead">STROBE-MetEpi provides a structured checklist for reporting observational studies that use metabolomic profiling in human populations, from study design and biospecimen handling to statistical analysis, biological interpretation, and data sharing.</p>
+            <div class="hero-actions"><a class="button" href="#download">Download the checklist</a><a class="button secondary" href="#checklist">View checklist items</a></div>
+          </div>
+          <aside class="hero-card" aria-label="Key facts">
+            <h2>At a glance</h2>
+            <ul>
+              <li>31 reporting items and subitems.</li>
+              <li>Designed for cohort, case-control, nested case-control, case-cohort, and cross-sectional studies.</li>
+              <li>Applies to MS- and NMR-based metabolomic profiling.</li>
+              <li>Complements, rather than replaces, the original STROBE Statement.</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="about"><div class="container"><h2>Why STROBE-MetEpi?</h2><p>Metabolomic epidemiology has expanded rapidly, but published studies often provide insufficient detail for readers, reviewers, and editors to assess the study design, biospecimen handling, analytical workflows, sources of bias, robustness of findings, and reproducibility. STROBE-MetEpi was developed to improve completeness and transparency in the reporting of this interdisciplinary field.</p><div class="cards"><article class="card"><h3>For authors</h3><p>Use the checklist when planning and reporting a manuscript to ensure that critical design, laboratory, computational, and statistical details are described.</p></article><article class="card"><h3>For reviewers</h3><p>Use the checklist to assess whether the report contains enough information to appraise validity, reproducibility, interpretation, and generalisability.</p></article><article class="card"><h3>For editors</h3><p>Encourage authors to submit a completed STROBE-MetEpi checklist as supplementary material alongside relevant observational metabolomics manuscripts.</p></article></div></div></section>
+
+    <section id="scope"><div class="container"><h2>Scope and intended use</h2><p>STROBE-MetEpi is a reporting guideline, not a manual for how to conduct a study. It is intended for observational studies in human populations using high-dimensional metabolomic profiling, including exploratory metabolome-wide analyses and hypothesis-driven or replication studies.</p><div class="cards"><article class="card"><h3>Studies addressed</h3><ul><li>Cohort studies</li><li>Case-control studies</li><li>Nested case-control and case-cohort studies</li><li>Cross-sectional studies</li></ul></article><article class="card"><h3>Technologies addressed</h3><ul><li>Mass spectrometry-based profiling</li><li>Nuclear magnetic resonance spectroscopy</li><li>Targeted and untargeted metabolomic approaches</li><li>Annotated and unannotated metabolite features</li></ul></article><article class="card"><h3>Not primarily addressed</h3><ul><li>Randomized controlled trials</li><li>Systematic reviews</li><li>Laboratory reliability or feasibility studies</li><li>Methodological development studies</li><li>Multi-omics studies requiring integrated reporting guidance</li></ul></article></div></div></section>
+
+    <section id="workflow"><div class="container"><h2>From biospecimens to biological interpretation</h2><p>The checklist follows the typical flow of a metabolomic epidemiology study and makes visible the decisions that are often implicit or underreported.</p><div class="workflow" aria-label="Metabolomic epidemiology workflow"><article class="step"><b>1</b><h3>Study design</h3><p>Setting, eligibility, covariates, participant selection.</p></article><article class="step"><b>2</b><h3>Specimen collection and storage</h3><p>Sample type, timing, conditions, storage and handling.</p></article><article class="step"><b>3</b><h3>Metabolite measurement</h3><p>MS or NMR instrumentation, analytical method, acquisition.</p></article><article class="step"><b>4</b><h3>Data processing and annotation</h3><p>Software, parameters, metabolite identification, QA/QC.</p></article><article class="step"><b>5</b><h3>Statistical analysis</h3><p>Models, missing data, multiple testing, validation.</p></article><article class="step"><b>6</b><h3>Biological interpretation</h3><p>Pathway analysis, uncertainty, generalisability and limitations.</p></article></div></div></section>
+
+    <section id="checklist"><div class="container"><h2>The STROBE-MetEpi checklist</h2><p>The table below provides a concise website view of the main checklist domains. The full checklist should be used when preparing, reviewing, or editing a manuscript.</p><div class="checklist-wrap"><table><thead><tr><th>Section</th><th>Items</th><th>What should be reported</th></tr></thead><tbody><tr class="title-abstract"><td>Title / Abstract</td><td>1</td><td>Identify the work as metabolomic epidemiology; state design, analytical technology, biospecimen, and study size.</td></tr><tr class="introduction"><td>Introduction</td><td>2–3</td><td>Explain the scientific background, rationale for metabolomic data, objectives, and whether the study is exploratory, hypothesis-driven, or a replication effort.</td></tr><tr class="methods"><td>Methods</td><td>4–18</td><td>Report study design, setting, participants, sample collection, storage, pre-analytical processing, instrumentation, data processing, identification or annotation, QA/QC, transformation and scaling, missing data, statistical modelling, false-positive control, validation, and pathway analyses.</td></tr><tr class="results"><td>Results</td><td>19–24</td><td>Report participant flow, exclusions, metabolite counts and annotation status, descriptive data, single-metabolite results, multiple-metabolite models, validation statistics, and pathway or metabolite-set enrichment results.</td></tr><tr class="discussion"><td>Discussion</td><td>25–28</td><td>Summarise key results, discuss limitations and sources of bias, interpret findings cautiously, and address generalisability.</td></tr><tr class="other"><td>Other information</td><td>29–31</td><td>Describe funding, conflicts of interest, metabolomic data availability, and code sharing.</td></tr></tbody></table></div><div class="notice"><strong>Recommended use:</strong> authors should submit a completed checklist as supplementary material and indicate where each relevant item is addressed in the manuscript.</div></div></section>
+
+    <section id="resources"><div class="container"><h2>Resources</h2><p>The STROBE-MetEpi website should make the checklist easy to download, explain the rationale for each item, and provide examples of transparent reporting.</p><div class="downloads" id="download"><article class="download-card"><div><h3>STROBE-MetEpi Statement</h3><p>Overview paper introducing the reporting guideline and the 31-item checklist.</p></div><a class="button" href="downloads/strobe-metepi-statement.pdf">Download PDF</a></article><article class="download-card"><div><h3>E &amp; E</h3><p>Detailed rationale, explanations, and published examples for each checklist item. The E &amp; E is presented as a single integrated resource.</p></div><a class="button" href="downloads/strobe-metepi-explanation-and-elaboration.pdf">Download PDF</a></article><article class="download-card"><div><h3>Checklist template</h3><p>A fillable checklist for authors to complete and submit with manuscripts.</p></div><a class="button" href="downloads/strobe-metepi-checklist.docx">Download DOCX</a></article><article class="download-card"><div><h3>Examples library</h3><p>Examples of clear reporting for biospecimen handling, instrumentation, metabolite annotation, QA/QC, statistical analysis, and interpretation.</p></div><a class="button secondary" href="examples.html">Browse examples</a></article></div></div></section>
+
+    <section id="community"><div class="container"><h2>Community feedback and updates</h2><p>Metabolomic epidemiology is evolving quickly. STROBE-MetEpi should therefore be maintained as a living community resource, with feedback from authors, reviewers, editors, metabolomics specialists, epidemiologists, statisticians, and readers.</p><div class="cards"><article class="card"><h3>Submit feedback</h3><p>Invite comments on checklist wording, missing items, and field-specific challenges.</p></article><article class="card"><h3>Journal endorsement</h3><p>Provide guidance for journals wishing to recommend or require the checklist.</p></article><article class="card"><h3>Updates</h3><p>Track revisions, translations, publications, and implementation resources.</p></article></div></div></section>
+  </main>
+
+  <footer class="footer"><div class="container"><strong>STROBE-MetEpi</strong><p>Reporting Guidelines for Metabolomic Epidemiology. This website is a draft structure and should be adapted once the final publications, checklist files, contact address, and repository links are available.</p><p><a href="https://www.strobe-statement.org/">STROBE Statement</a> · <a href="https://www.strobe-mr.org/">STROBE-MR</a> · <a href="https://www.equator-network.org/">EQUATOR Network</a></p></div></footer>
+</body>
+</html>
