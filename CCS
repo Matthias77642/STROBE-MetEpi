@@ -1,0 +1,30 @@
+.feedback-callout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 28px 32px;
+  background: var(--soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.feedback-callout h2 {
+  margin-bottom: 8px;
+}
+
+.feedback-callout p {
+  max-width: 760px;
+  margin: 0;
+}
+
+.feedback-callout .button {
+  flex-shrink: 0;
+}
+
+@media (max-width: 700px) {
+  .feedback-callout {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
