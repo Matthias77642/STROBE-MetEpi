@@ -1,0 +1,622 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="STROBE-MetEpi: Reporting guidelines for Metabolomic Epidemiology." />
+  <title>STROBE-MetEpi Checklist | Reporting Guidelines for Metabolomic Epidemiology</title>
+  <style>
+    :root{
+      --red:#d71920;
+      --red-dark:#a80f16;
+      --ink:#17202a;
+      --muted:#5f6b7a;
+      --line:#e6e9ee;
+      --soft:#f7f8fa;
+      --blue:#e8f4ff;
+      --peach:#fff0e7;
+      --max:1160px;
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:white;line-height:1.55}
+    a{color:var(--red-dark);text-decoration:none} a:hover{text-decoration:underline}
+    .container{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+    .site-header{background:white;border-bottom:1px solid var(--line)}
+    .banner-wrap{padding:14px 20px 8px}
+    .topbar{background:white;border-top:0;border-bottom:1px solid var(--line)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:68px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+    .brand-mark{width:42px;height:42px;border-radius:12px;background:var(--red);color:white;display:grid;place-items:center;font-weight:900;line-height:1}
+    .nav-links{display:flex;align-items:center;gap:42px;font-size:16px}.nav-links a{color:#29313b;font-weight:600;padding:22px 0;white-space:nowrap}.nav-links a.active{color:var(--red);border-bottom:4px solid var(--red)}
+    .search{display:flex;align-items:center;border:1px solid var(--line);border-radius:8px;background:white;overflow:hidden}.search input{border:0;outline:0;padding:10px 12px;font:inherit;min-width:220px}.search button{border:0;background:white;padding:8px 12px;font-size:24px;line-height:1;color:#29313b;cursor:pointer}
+    .button{display:inline-flex;align-items:center;justify-content:center;padding:11px 16px;border-radius:999px;border:1px solid var(--red);background:var(--red);color:white;font-weight:700;box-shadow:0 10px 24px rgba(215,25,32,.18)}
+    .button.secondary{background:white;color:var(--red-dark);box-shadow:none}
+
+    .hero{padding:34px 0 34px;border-top:0}
+    .banner{width:100%;height:auto;display:block;margin:0;filter:none}
+    .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:center}
+    .eyebrow{color:var(--red-dark);font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:13px;margin-bottom:12px}
+    h1{margin:0 0 18px;font-size:clamp(38px,6vw,68px);line-height:.98;letter-spacing:-.055em}
+    .lead{font-size:clamp(18px,2vw,22px);color:var(--muted);max-width:760px;margin:0 0 26px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .hero-card{background:linear-gradient(180deg,#fff,#f9fafb);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:0 20px 50px rgba(23,32,42,.08)}
+    .hero-card h2{margin-top:0;font-size:22px}.hero-card ul{padding-left:20px;margin-bottom:0}
+
+    section{padding:64px 0;border-top:1px solid var(--line)}
+    section h2{font-size:clamp(28px,3vw,42px);line-height:1.08;margin:0 0 18px;letter-spacing:-.035em}
+    section p{color:var(--muted);font-size:17px}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
+    .card{background:white;border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:0 10px 30px rgba(23,32,42,.05)}
+    .card h3{margin:0 0 8px;font-size:20px}.card p,.card li{font-size:15.5px}.card ul{padding-left:18px;margin-bottom:0;color:var(--muted)}
+
+    .workflow{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:28px}
+    .step{border-radius:18px;padding:16px;min-height:140px;border:1px solid rgba(0,0,0,.06)}
+    .step:nth-child(odd){background:var(--blue)}.step:nth-child(even){background:var(--peach)}
+    .step b{display:block;font-size:13px;color:var(--red-dark);margin-bottom:8px}.step h3{margin:0 0 8px;font-size:16px;line-height:1.2}.step p{margin:0;font-size:14px;color:#3e4a57}
+
+    .checklist-wrap{margin-top:28px;overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:white}
+    table{width:100%;border-collapse:collapse;min-width:860px}th,td{padding:14px 16px;vertical-align:top;border-bottom:1px solid var(--line);text-align:left;font-size:15px}th{background:#f0f2f5;color:#29313b}
+    tr.title-abstract td,tr.methods td,tr.discussion td{background:var(--blue)}tr.introduction td,tr.results td,tr.other td{background:var(--peach)}
+    .downloads{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:28px}.download-card{display:flex;flex-direction:column;justify-content:space-between;gap:18px;min-height:210px;padding:24px;border-radius:var(--radius);border:1px solid var(--line);background:var(--soft)}.download-card h3{margin:0 0 8px;font-size:22px}.download-card p{margin:0;font-size:16px}
+    .notice{background:#fff7f7;border:1px solid #f2c4c6;border-left:6px solid var(--red);padding:18px 20px;border-radius:16px;color:#3e4a57;margin-top:28px}
+    .footer{background:#121820;color:white;padding:46px 0}.footer p{color:#c9d1dc;margin:8px 0 0}.footer a{color:white;text-decoration:underline}
+
+    /* Interactive checklist */
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .interactive-checklist{background:var(--soft)}
+    .checklist-intro{display:flex;align-items:flex-end;justify-content:space-between;gap:28px;margin-bottom:24px}
+    .checklist-intro p{max-width:780px;margin-bottom:0}
+    .save-state{display:flex;align-items:center;gap:9px;flex:0 0 auto;color:var(--muted);font-size:13px;font-weight:650}
+    .save-dot{width:8px;height:8px;border-radius:50%;background:#278664;box-shadow:0 0 0 4px rgba(39,134,100,.12)}
+    .checklist-purpose{display:flex;gap:14px;margin-bottom:22px;padding:18px 20px;border:1px solid #f2c4c6;border-radius:16px;background:#fff7f7}
+    .checklist-purpose svg{flex:0 0 auto;width:22px;height:22px;fill:none;stroke:var(--red-dark);stroke-linecap:round;stroke-linejoin:round;stroke-width:1.8}
+    .checklist-purpose strong{font-size:15px}.checklist-purpose p{margin:3px 0 0;color:#5b4b4c;font-size:14px}
+    .details-card,.checklist-shell{border:1px solid var(--line);border-radius:var(--radius);background:white;box-shadow:0 16px 44px rgba(23,32,42,.07)}
+    .details-card{padding:28px}.checklist-shell{margin-top:20px;padding:28px}
+    .checklist-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:28px;margin-bottom:24px}
+    .checklist-heading h3,.checklist-download h3{margin:4px 0 0;font-size:25px;line-height:1.15}
+    .checklist-heading p{max-width:610px;margin:0;font-size:14px}
+    .checklist-kicker{color:var(--red-dark);font-size:12px;font-weight:800;letter-spacing:.11em;text-transform:uppercase}
+    .details-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .field-wide{grid-column:span 2}
+    .field span{display:block;margin-bottom:7px;font-size:12px;font-weight:750}.field em{color:#7c8794;font-style:normal;font-weight:450}
+    .field input,.checklist-search input,.response-input,.notes-input{width:100%;border:1px solid #cfd5dc;border-radius:9px;color:var(--ink);background:white;outline:none;transition:border-color .15s ease,box-shadow .15s ease}
+    .field input{height:44px;padding:0 12px;font-size:14px}
+    .field input:focus,.checklist-search input:focus,.response-input:focus,.notes-input:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(215,25,32,.11)}
+    .field input.invalid,.response-input.invalid{border-color:var(--red);box-shadow:0 0 0 3px rgba(215,25,32,.09)}
+    .progress-panel{padding:17px 19px;border-radius:12px;background:#f1f3f6}
+    .progress-copy{display:flex;justify-content:space-between;gap:20px;margin-bottom:10px;font-size:13px}.progress-copy span{color:var(--muted)}
+    .progress-track{height:8px;overflow:hidden;border-radius:12px;background:#dfe3e8}.progress-track span{display:block;width:0;height:100%;border-radius:inherit;background:var(--red);transition:width .25s ease}
+    .checklist-toolbar{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;gap:16px;margin:20px -4px 8px;padding:12px 4px;background:rgba(255,255,255,.97);backdrop-filter:blur(10px)}
+    .filter-group{display:flex;flex-wrap:wrap;gap:7px}.filter-button,.text-button{border:1px solid var(--line);border-radius:999px;color:#4d5968;background:white;font-size:12px;font-weight:700;cursor:pointer}
+    .filter-button{padding:8px 13px}.filter-button:hover,.filter-button.active{border-color:var(--red);color:white;background:var(--red)}
+    .toolbar-right{display:flex;align-items:center;gap:8px}.checklist-search{position:relative}.checklist-search svg{position:absolute;top:10px;left:11px;width:16px;height:16px;fill:none;stroke:#718090;stroke-width:1.8}
+    .checklist-search input{width:200px;height:36px;padding:0 10px 0 35px;font-size:12px}.text-button{padding:8px 12px}.text-button:hover{border-color:#d9a1a4;color:var(--red-dark);background:#fff4f4}
+    .validation-banner{margin:12px 0 18px;padding:13px 15px;border:1px solid #e5afb2;border-radius:10px;color:#7c252a;background:#fff2f2;font-size:13px}
+    .interactive-checklist .checklist-section{margin-top:30px;padding:0;border:0}.interactive-checklist .checklist-section:first-child{margin-top:18px}
+    .section-label{display:flex;align-items:center;gap:12px;margin:0 0 12px;color:var(--red-dark);font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}.section-label::after{content:"";flex:1;height:1px;background:var(--line)}
+    .checklist-row{display:grid;grid-template-columns:54px minmax(260px,1.2fr) minmax(320px,1fr);gap:22px;padding:24px 4px;border-bottom:1px solid var(--line);scroll-margin-top:20px}
+    .checklist-row.has-error{margin:0 -12px;padding-right:16px;padding-left:16px;border-radius:12px;background:#fff8f8}
+    .item-number{display:grid;place-items:center;align-self:start;width:42px;height:34px;border:1px solid #efb7ba;border-radius:7px;color:var(--red-dark);background:#fff5f5;font-size:13px;font-weight:800}
+    .item-title{margin:0 0 7px;font-size:14px}.interactive-checklist .recommendation{margin:0;color:#46515e;font-family:Georgia,"Times New Roman",serif;font-size:15px;line-height:1.55}
+    .response-area{min-width:0}.status-control{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:12px}.status-option{position:relative}.status-option input{position:absolute;opacity:0;pointer-events:none}
+    .status-option span{display:block;padding:8px 6px;border:1px solid #cfd5dc;border-radius:8px;color:#56616e;background:white;text-align:center;font-size:11px;font-weight:700;transition:.15s ease;cursor:pointer}.status-option span:hover{border-color:#b58487}.status-option input:focus-visible+span{outline:3px solid rgba(215,25,32,.18);outline-offset:1px}.status-option input:checked+span{border-color:var(--red);color:var(--red-dark);background:#fff1f1}.status-option.not-reported input:checked+span{border-color:#d8a540;color:#725316;background:#fff6df}.status-option.not-applicable input:checked+span{border-color:#829ca5;color:#45606a;background:#e8f0f3}
+    .response-fields{display:grid;grid-template-columns:1fr 1fr;gap:8px}.input-wrap span{display:block;margin:0 0 5px;color:#65717f;font-size:10px;font-weight:800}.response-input,.notes-input{min-height:40px;padding:9px 10px;resize:vertical;font-size:12px;line-height:1.35}.response-input,.notes-input{height:40px}.field-error{display:none;margin-top:5px;color:var(--red-dark);font-size:10px}.has-error .field-error{display:block}
+    .empty-state{padding:56px 20px;color:var(--muted);text-align:center}
+    .checklist-download{display:flex;align-items:center;justify-content:space-between;gap:32px;margin:38px -28px -28px;padding:28px;border-radius:0 0 var(--radius) var(--radius);color:white;background:#9f1117}.checklist-download .checklist-kicker{color:#ffc6c8}.checklist-download p{max-width:650px;margin:9px 0 0;color:#f8d9da;font-size:13px}
+    .download-completed{flex:0 0 auto;display:flex;align-items:center;justify-content:center;gap:9px;min-height:46px;padding:0 18px;border:0;border-radius:999px;color:var(--red-dark);background:white;font-size:13px;font-weight:800;box-shadow:0 7px 20px rgba(0,0,0,.15);cursor:pointer}.download-completed:hover{transform:translateY(-1px)}.download-completed svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.8}
+    .toast{position:fixed;right:24px;bottom:24px;z-index:50;max-width:360px;padding:12px 16px;border-radius:9px;color:white;background:#26313d;box-shadow:0 10px 30px rgba(0,0,0,.18);font-size:13px;opacity:0;transform:translateY(12px);pointer-events:none;transition:.2s ease}.toast.show{opacity:1;transform:translateY(0)}
+    @media(max-width:900px){.checklist-intro,.checklist-heading{align-items:flex-start;flex-direction:column;gap:10px}.details-grid{grid-template-columns:1fr 1fr}.checklist-row{grid-template-columns:46px 1fr}.response-area{grid-column:2}.checklist-download{align-items:flex-start;flex-direction:column}}
+    @media(max-width:620px){.details-card,.checklist-shell{padding:20px 15px;border-radius:16px}.details-grid{grid-template-columns:1fr}.field-wide{grid-column:auto}.progress-copy{align-items:flex-start;flex-direction:column;gap:3px}.checklist-toolbar{align-items:stretch;flex-direction:column}.toolbar-right{justify-content:space-between}.checklist-search{flex:1}.checklist-search input{width:100%}.checklist-row{grid-template-columns:42px 1fr;gap:12px}.response-area{grid-column:1/-1}.response-fields{grid-template-columns:1fr}.checklist-download{margin:30px -15px -20px;padding:24px 15px;border-radius:0 0 16px 16px}.download-completed{width:100%}.save-state{font-size:12px}}
+    @media(max-width:900px){.hero-grid,.cards,.downloads{grid-template-columns:1fr}.workflow{grid-template-columns:repeat(2,1fr)}.nav{align-items:flex-start;flex-direction:column;padding:14px 0}.nav-links{flex-wrap:wrap}}
+    @media(max-width:560px){.workflow{grid-template-columns:1fr}.nav-links{display:none}.container{padding:0 18px}section{padding:48px 0}}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="banner-wrap">
+      <svg class="banner" viewBox="0 0 2048 318" role="img" aria-labelledby="banner-title banner-desc" xmlns="http://www.w3.org/2000/svg">
+        <title id="banner-title">STROBE-MetEpi</title>
+        <desc id="banner-desc">Reporting Guidelines for Metabolomic Epidemiology</desc>
+        <defs>
+          <linearGradient id="redGradient" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#e21b23"/>
+            <stop offset="1" stop-color="#c9131b"/>
+          </linearGradient>
+        </defs>
+        <rect x="18" y="12" width="2012" height="286" rx="16" fill="url(#redGradient)"/>
+
+        <!-- Full logo: molecular structure plus tick -->
+        <g transform="translate(194 51)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round">
+          <g stroke-width="8">
+            <path d="M40 92 L96 58 L152 92 L152 156 L96 190 L40 156 Z"/>
+            <path d="M96 58 L96 28"/>
+            <path d="M152 92 L182 76"/>
+            <path d="M152 156 L182 174"/>
+            <path d="M40 156 L18 174"/>
+            <path d="M18 174 L18 202"/>
+            <circle cx="96" cy="28" r="12" fill="#fff" stroke="none"/>
+            <circle cx="182" cy="76" r="12" fill="#fff" stroke="none"/>
+            <circle cx="182" cy="174" r="12" fill="#fff" stroke="none"/>
+            <circle cx="18" cy="174" r="12" fill="#fff" stroke="none"/>
+            <circle cx="18" cy="202" r="12" fill="#fff" stroke="none"/>
+          </g>
+          <path d="M224 148 L254 178 L312 110" stroke="#fff" stroke-width="14" stroke-linecap="square" stroke-linejoin="miter"/>
+        </g>
+
+        <text x="560" y="156" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="88" font-weight="800" letter-spacing="-2">STROBE-MetEpi</text>
+        <text x="566" y="235" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="43" font-weight="400">Reporting Guidelines for Metabolomic Epidemiology</text>
+      </svg>
+    </div>
+
+    <div class="topbar">
+      <div class="container nav">
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="index.html#top">Home</a><a href="index.html#about">About</a><a class="active" href="#checklist">Checklist</a><a href="index.html#resources">E &amp; E</a><a href="index.html#scope">Scope</a><a href="index.html#resources">Resources</a><a href="index.html#community">News</a><a href="index.html#community">Community</a><a href="index.html#community">Contact</a>
+        </nav>
+        <form class="search" role="search"><input type="search" placeholder="Search site..." aria-label="Search site"><button type="submit" aria-label="Search">⌕</button></form>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section id="checklist" class="interactive-checklist">
+      <div class="container">
+        <div class="checklist-intro">
+          <div>
+            <div class="eyebrow">For authors of metabolomic epidemiology studies</div>
+            <h2>Complete the STROBE-MetEpi checklist</h2>
+            <p>Work through all 31 items and subitems, record where each recommendation is addressed in your manuscript, and download the completed checklist to accompany your journal submission.</p>
+          </div>
+          <span class="save-state" id="checklist-save-state" aria-live="polite"><span class="save-dot" aria-hidden="true"></span>Saved on this device</span>
+        </div>
+
+        <aside class="checklist-purpose" aria-label="Purpose of this checklist">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Zm0-13v7m0-10.2v.2" /></svg>
+          <div><strong>A reporting aid, not a scoring instrument</strong><p>The checklist supports complete and transparent reporting. It does not assess study quality, prescribe how research should be conducted, or produce a score.</p></div>
+        </aside>
+
+        <div class="details-card">
+          <div class="checklist-heading">
+            <div><span class="checklist-kicker">Step 1</span><h3>Manuscript details</h3></div>
+            <p>These details appear at the top of the checklist you download.</p>
+          </div>
+          <div class="details-grid">
+            <label class="field field-wide"><span>Manuscript title</span><input id="manuscript-title" autocomplete="off" placeholder="Enter the full manuscript title" /></label>
+            <label class="field"><span>Corresponding author</span><input id="corresponding-author" autocomplete="name" placeholder="Name" /></label>
+            <label class="field"><span>Target journal <em>optional</em></span><input id="target-journal" autocomplete="organization" placeholder="Journal name" /></label>
+            <label class="field"><span>Manuscript ID <em>optional</em></span><input id="manuscript-id" autocomplete="off" placeholder="If assigned" /></label>
+            <label class="field"><span>Date completed</span><input id="completion-date" type="date" /></label>
+          </div>
+        </div>
+
+        <div class="checklist-shell">
+          <div class="checklist-heading">
+            <div><span class="checklist-kicker">Step 2</span><h3>Checklist items</h3></div>
+            <p>Select a status for every row. For reported items, add the relevant page, paragraph, table, figure, or supplement.</p>
+          </div>
+          <div class="progress-panel" aria-label="Checklist progress">
+            <div class="progress-copy"><strong><span id="completed-count">0</span> of <span id="total-count">0</span> rows completed</strong><span id="progress-label">Your progress is saved automatically.</span></div>
+            <div class="progress-track" aria-hidden="true"><span id="progress-bar"></span></div>
+          </div>
+          <div class="checklist-toolbar" aria-label="Checklist controls">
+            <div class="filter-group" role="group" aria-label="Filter checklist">
+              <button class="filter-button active" data-filter="all" type="button">All</button>
+              <button class="filter-button" data-filter="incomplete" type="button">Incomplete</button>
+              <button class="filter-button" data-filter="reported" type="button">Reported</button>
+              <button class="filter-button" data-filter="not-applicable" type="button">Not applicable</button>
+            </div>
+            <div class="toolbar-right">
+              <label class="checklist-search"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m16.5 16.5 4 4"/></svg><span class="sr-only">Search checklist</span><input id="checklist-search" type="search" placeholder="Search items" /></label>
+              <button class="text-button" id="reset-button" type="button">Reset</button>
+            </div>
+          </div>
+          <div id="validation-banner" class="validation-banner" role="alert" hidden></div>
+          <div id="checklist-items"></div>
+          <div id="empty-state" class="empty-state" hidden>No checklist rows match this view.</div>
+          <div class="checklist-download">
+            <div><span class="checklist-kicker">Step 3</span><h3>Download for submission</h3><p>Download an editable, Word-compatible checklist containing every recommendation, your selections, manuscript locations, and notes.</p></div>
+            <button class="download-completed" id="download-button" type="button"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14"/></svg>Download completed checklist</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer"><div class="container"><strong>STROBE-MetEpi</strong><p>Reporting Guidelines for Metabolomic Epidemiology. This website is a draft structure and should be adapted once the final publications, checklist files, contact address, and repository links are available.</p><p><a href="https://www.strobe-statement.org/">STROBE Statement</a> · <a href="https://www.strobe-mr.org/">STROBE-MR</a> · <a href="https://www.equator-network.org/">EQUATOR Network</a></p></div></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script>
+    const CHECKLIST = [
+      ["Title / Abstract", [
+        ["1a", "Title or Abstract", "Include the word ‘Metabolomic’, ‘Metabolome’, ‘Metabolite’, or similar."],
+        ["1b", "Title or Abstract", "State this is an epidemiological study or use epidemiological terms to make it explicit in the title or abstract. Define the epidemiological study design."],
+        ["1c", "Title or Abstract", "Provide information on analytical technology, biological specimen profiled, and size of the study."]
+      ]],
+      ["Introduction", [
+        ["2", "Background", "Explain the scientific background and rationale. Justify why metabolomic data are helpful to address the study question(s)."],
+        ["3", "Objectives", "State the overarching objectives. Specify whether this is a hypothesis-driven or discovery-based/exploratory study; if hypothesis-driven, provide the predefined hypothesis. State whether this is a first report or a replication effort for existing results."]
+      ]],
+      ["Methods", [
+        ["4", "Study design", "Present the key elements of the study design and state whether the study was designed to include metabolomic profiling."],
+        ["5a", "Study setting and participants", "Provide the eligibility and exclusion criteria for study entry, including setting, source population, and sampling."],
+        ["5b", "Study setting and participants", "Report any participant or sample characteristics that could affect the metabolome specifically, if relevant."],
+        ["5c", "Study setting and participants", "Provide details of ethics committee approval and participant informed consent, if relevant."],
+        ["6a", "Biological sample collection, handling and storage", "Report the biological sample type and collection protocol, including timing and conditions, in sufficient detail to assess sample quality. Specify whether conditions were the same for every sample in the study."],
+        ["6b", "Biological sample collection, handling and storage", "Report on sample storage prior to processing."],
+        ["7", "Pre-analytical biological sample processing and preparation", "Provide sufficient detail to enable replication of the pre-analytical processing conditions prior to metabolomic profiling. If referencing an existing standard operating procedure (SOP), provide the DOI, version control, and any deviations."],
+        ["8", "Instrumentation and data acquisition", "Provide sufficient detail to enable replication of the analytical method used to collect the metabolomics data, including the name and version of the instrument and the software version used to control it. If referencing an existing SOP, provide the DOI, version control, and any deviations."],
+        ["9", "Data processing", "Provide sufficient detail to enable replication of the transformation of raw data into a data table suitable for analysis, including software package and version number and parameter settings used."],
+        ["10", "Metabolite identification / annotation", "Describe how metabolite identification or annotation was achieved, including which physicochemical properties the decisions were based on and which reference libraries were used."],
+        ["11a", "Quality assurance, signal intensity drift correction, quality control, and data cleaning", "Describe all quality assurance, signal intensity drift correction, quality control, and data cleaning procedures; how blanks, system suitability mixes, and quality control samples were prepared and applied before and during data acquisition."],
+        ["11b", "Quality assurance, signal intensity drift correction, quality control, and data cleaning", "If signal intensity drift correction was performed, reference the algorithm used."],
+        ["11c", "Quality assurance, signal intensity drift correction, quality control, and data cleaning", "For quality assessment and data cleaning after data acquisition, include which metrics and/or exclusion criteria were used and how they were applied."],
+        ["12", "Transformation / scaling", "If transformation and scaling were applied prior to statistical analysis, describe which methods were chosen."],
+        ["13", "Handling of missing data", "Describe how missing values were treated for both metabolomic and covariate data. If imputation was performed, describe the chosen method."],
+        ["14", "Type of model", "Provide a clear summary of the model and the framework in which it was performed, specifying dependent and independent variables and covariates as appropriate."],
+        ["15a", "Model complexity choice / hyperparameter optimization / model validation", "If relevant, describe the assumptions that pertain to your chosen model and how these assumptions were tested."],
+        ["15b", "Model complexity choice / hyperparameter optimization / model validation", "Describe how the model was optimized, including, as appropriate, formal model selection procedures, model tuning, optimizing the number of latent variables, and covariate selection; state why these choices were made."],
+        ["15c", "Model complexity choice / hyperparameter optimization / model validation", "State the software used, its version, and the procedure applied."],
+        ["16", "Strategies to avoid false positives", "Where applicable, describe which methods were used to correct for multiple testing and to determine significance."],
+        ["17", "Independent validation", "Describe whether and how validation of findings was attempted, how findings were chosen for validation, and which criteria were used to determine validation. If an independent population was used, also describe it under study setting and participants."],
+        ["18a", "Pathway analysis / pathway enrichment / metabolite set analysis", "Report the analysis method used, software package, version, and values of associated parameters, as well as the database used, release number, compound identifier type, and organism-specific set used, if relevant."],
+        ["18b", "Pathway analysis / pathway enrichment / metabolite set analysis", "State the multiple-testing correction approach and associated adjusted significance level."],
+        ["18c", "Pathway analysis / pathway enrichment / metabolite set analysis", "If applying over-representation analysis, report the background metabolite set and statistical method used to select significant metabolites."]
+      ]],
+      ["Results", [
+        ["19a", "Participants", "Describe the final number(s) of individuals included in the primary analyses."],
+        ["19b", "Participants", "Provide the number excluded and reasons, including, if relevant, those excluded due to missing phenotype data, sample availability or failure, insufficient volume, etc. Use of a flow diagram including all analyses is strongly encouraged."],
+        ["20a", "Metabolites", "State the number of metabolites or metabolite features reported in the study and whether the values are relative abundance or quantitative."],
+        ["20b", "Metabolites", "Specify the number that were identified or annotated and how many were unknown."],
+        ["20c", "Metabolites", "State the final subset of metabolites used in the analysis."],
+        ["21a", "Descriptive data", "Provide the primary characteristics of study participants and information on exposures and potential confounders."],
+        ["21b", "Descriptive data", "Indicate the number of subjects with missing data for the variables of interest."],
+        ["21c", "Descriptive data", "For cohort studies, summarize the duration of follow-up and the timepoint(s) during the study at which metabolomic profiles were measured."],
+        ["22a", "Main results — single-metabolite models", "Provide unadjusted effect estimates and, if applicable, confounder-adjusted estimates and their precision (for example, 95% confidence intervals). State which confounders were adjusted for."],
+        ["22b", "Main results — single-metabolite models", "Report results that were robust to correction for multiple testing and, where relevant, those that replicated."],
+        ["22c", "Main results — single-metabolite models", "Report sensitivity analyses and related approaches used to corroborate findings and strengthen causal inference."],
+        ["22d", "Main results — single-metabolite models", "If multiple statistical methods were used, report the approach used to define consensus."],
+        ["23a", "Main results — multiple-metabolite models", "Report the type of model and its main parameters, including whether the approach is supervised or unsupervised."],
+        ["23b", "Main results — multiple-metabolite models", "Report model-validation statistics (cross-validation, permutation, etc.)."],
+        ["23c", "Main results — multiple-metabolite models", "Report the main findings: how well the model predicts the outcome in supervised approaches (with associated statistical uncertainty metrics) and/or how important features were identified in the model (with associated statistical uncertainty metrics). State which results replicated, if relevant."],
+        ["24a", "Pathway / metabolite set enrichment analysis", "Report the coverage of metabolite sets: the number of quantified metabolites relative to the size of the pathway or set (for example, minimum, median, and maximum)."],
+        ["24b", "Pathway / metabolite set enrichment analysis", "Report the number and identity of enriched pathways and the associated metrics describing their enrichment."]
+      ]],
+      ["Discussion", [
+        ["25", "Key results", "Summarize key results with reference to the study objectives."],
+        ["26", "Limitations", "Discuss limitations of the study, taking into account sources of potential bias or imprecision. Discuss both the direction and magnitude of any potential bias."],
+        ["27", "Interpretation", "Give a cautious overall interpretation of results, considering the objectives, limitations, multiplicity of analyses, results from similar studies, and other relevant evidence. Make biological interpretations relative to the level of confidence in the metabolite identifications."],
+        ["28", "Generalisability", "Discuss the generalisability (external validity) of the study results."]
+      ]],
+      ["Other information", [
+        ["29", "Funding", "Describe sources of funding and the role of funders in the present study and, if applicable, sources of funding for the databases and original study or studies on which the present study is based."],
+        ["30", "Conflicts of interest", "State whether any authors have conflicts of interest relevant to the proposed work."],
+        ["31a", "Data and code sharing", "If the metabolomic data were uploaded to a public repository, provide details of the repository and how the data can be accessed."],
+        ["31b", "Data and code sharing", "Report whether the code needed to reproduce the results in the article is publicly accessible and, if so, where."]
+      ]]
+    ].map(function(section) {
+      return {
+        section: section[0],
+        rows: section[1].map(function(row) { return { id: row[0], item: row[1], text: row[2] }; })
+      };
+    });
+
+    const STORAGE_KEY = "strobe-metepi-checklist-v1";
+    const DETAILS = ["manuscript-title", "corresponding-author", "target-journal", "manuscript-id", "completion-date"];
+    const flatRows = CHECKLIST.reduce(function(all, section) {
+      return all.concat(section.rows.map(function(row) {
+        return { id: row.id, item: row.item, text: row.text, section: section.section };
+      }));
+    }, []);
+    let state = loadState();
+    let activeFilter = "all";
+    let searchTerm = "";
+    let toastTimer;
+
+    function emptyState() {
+      return { details: { "completion-date": new Date().toISOString().slice(0, 10) }, responses: {} };
+    }
+
+    function loadState() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+        return saved && saved.details && saved.responses ? saved : emptyState();
+      } catch (error) {
+        return emptyState();
+      }
+    }
+
+    function saveState() {
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (error) {}
+      const saveStateEl = document.getElementById("checklist-save-state");
+      saveStateEl.lastChild.textContent = " Saved just now";
+      window.clearTimeout(saveStateEl.dataset.timer);
+      saveStateEl.dataset.timer = window.setTimeout(function() {
+        saveStateEl.lastChild.textContent = " Saved on this device";
+      }, 1600);
+    }
+
+    function responseFor(id) {
+      return state.responses[id] || { status: "", location: "", notes: "" };
+    }
+
+    function esc(value) {
+      return String(value == null ? "" : value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function statusOption(id, value, label, current) {
+      return '<label class="status-option ' + value + '">' +
+        '<input type="radio" name="status-' + esc(id) + '" value="' + value + '"' + (current === value ? " checked" : "") + ' />' +
+        '<span>' + label + '</span></label>';
+    }
+
+    function rowMatches(row) {
+      const response = responseFor(row.id);
+      const statusMatch = activeFilter === "all" ||
+        (activeFilter === "incomplete" && !response.status) ||
+        response.status === activeFilter;
+      const haystack = (row.id + " " + row.item + " " + row.text).toLowerCase();
+      return statusMatch && haystack.indexOf(searchTerm) !== -1;
+    }
+
+    function renderChecklist() {
+      const host = document.getElementById("checklist-items");
+      host.innerHTML = "";
+      let visible = 0;
+
+      CHECKLIST.forEach(function(section) {
+        const rows = section.rows.filter(rowMatches);
+        if (!rows.length) return;
+        visible += rows.length;
+        const sectionEl = document.createElement("div");
+        sectionEl.className = "checklist-section";
+        sectionEl.dataset.section = section.section;
+        sectionEl.innerHTML = '<h3 class="section-label">' + esc(section.section) + '</h3>';
+
+        rows.forEach(function(row) {
+          const response = responseFor(row.id);
+          const rowEl = document.createElement("article");
+          rowEl.className = "checklist-row";
+          rowEl.id = "item-" + row.id;
+          rowEl.dataset.id = row.id;
+          rowEl.innerHTML =
+            '<div class="item-number" aria-label="Item ' + esc(row.id) + '">' + esc(row.id) + '</div>' +
+            '<div><h3 class="item-title">' + esc(row.item) + '</h3><p class="recommendation">' + esc(row.text) + '</p></div>' +
+            '<div class="response-area">' +
+              '<div class="status-control" role="radiogroup" aria-label="Status for item ' + esc(row.id) + '">' +
+                statusOption(row.id, "reported", "Reported", response.status) +
+                statusOption(row.id, "not-reported", "Not reported", response.status) +
+                statusOption(row.id, "not-applicable", "Not applicable", response.status) +
+              '</div>' +
+              '<div class="response-fields">' +
+                '<label class="input-wrap"><span>WHERE REPORTED</span><input class="response-input" data-field="location" value="' + esc(response.location) + '" placeholder="e.g. p. 4, Methods" aria-label="Where item ' + esc(row.id) + ' is reported" /><small class="field-error">Add a manuscript location for reported items.</small></label>' +
+                '<label class="input-wrap"><span>NOTES <i class="sr-only">optional</i></span><textarea class="notes-input" data-field="notes" placeholder="Optional note" aria-label="Notes for item ' + esc(row.id) + '">' + esc(response.notes) + '</textarea></label>' +
+              '</div>' +
+            '</div>';
+          sectionEl.appendChild(rowEl);
+        });
+        host.appendChild(sectionEl);
+      });
+
+      document.getElementById("empty-state").hidden = visible !== 0;
+      bindRowEvents();
+    }
+
+    function bindRowEvents() {
+      document.querySelectorAll(".checklist-row").forEach(function(rowEl) {
+        const id = rowEl.dataset.id;
+        rowEl.querySelectorAll('input[type="radio"]').forEach(function(input) {
+          input.addEventListener("change", function() {
+            const current = responseFor(id);
+            state.responses[id] = { status: input.value, location: current.location, notes: current.notes };
+            clearRowError(rowEl);
+            saveState();
+            updateProgress();
+          });
+        });
+        rowEl.querySelectorAll("[data-field]").forEach(function(input) {
+          input.addEventListener("input", function() {
+            const current = responseFor(id);
+            state.responses[id] = {
+              status: current.status,
+              location: input.dataset.field === "location" ? input.value : current.location,
+              notes: input.dataset.field === "notes" ? input.value : current.notes
+            };
+            if (input.dataset.field === "location") clearRowError(rowEl);
+            saveState();
+          });
+        });
+      });
+    }
+
+    function updateProgress() {
+      const completed = flatRows.filter(function(row) { return Boolean(responseFor(row.id).status); }).length;
+      const total = flatRows.length;
+      document.getElementById("completed-count").textContent = completed;
+      document.getElementById("total-count").textContent = total;
+      document.getElementById("progress-bar").style.width = ((completed / total) * 100) + "%";
+      document.getElementById("progress-label").textContent = completed === total
+        ? "All statuses selected. Ready to validate and download."
+        : "Your progress is saved automatically.";
+    }
+
+    function hydrateDetails() {
+      DETAILS.forEach(function(id) {
+        const input = document.getElementById(id);
+        input.value = state.details[id] || "";
+        input.addEventListener("input", function() {
+          state.details[id] = input.value;
+          input.classList.remove("invalid");
+          saveState();
+        });
+      });
+    }
+
+    function markRowError(id) {
+      const rowEl = document.getElementById("item-" + id);
+      if (!rowEl) return;
+      rowEl.classList.add("has-error");
+      const response = responseFor(id);
+      if (response.status === "reported" && !response.location.trim()) {
+        const location = rowEl.querySelector(".response-input");
+        if (location) location.classList.add("invalid");
+      }
+    }
+
+    function clearRowError(rowEl) {
+      rowEl.classList.remove("has-error");
+      const location = rowEl.querySelector(".response-input");
+      if (location) location.classList.remove("invalid");
+    }
+
+    function validateChecklist() {
+      document.querySelectorAll(".has-error").forEach(clearRowError);
+      document.querySelectorAll(".invalid").forEach(function(el) { el.classList.remove("invalid"); });
+      const missingStatuses = flatRows.filter(function(row) { return !responseFor(row.id).status; });
+      const missingLocations = flatRows.filter(function(row) {
+        const response = responseFor(row.id);
+        return response.status === "reported" && !response.location.trim();
+      });
+      const missingDetails = ["manuscript-title", "corresponding-author", "completion-date"].filter(function(id) {
+        return !(state.details[id] || "").trim();
+      });
+
+      missingDetails.forEach(function(id) { document.getElementById(id).classList.add("invalid"); });
+      missingStatuses.concat(missingLocations).forEach(function(row) { markRowError(row.id); });
+
+      const banner = document.getElementById("validation-banner");
+      const parts = [];
+      if (missingDetails.length) parts.push(missingDetails.length + " required manuscript " + (missingDetails.length === 1 ? "detail is" : "details are") + " missing");
+      if (missingStatuses.length) parts.push(missingStatuses.length + " " + (missingStatuses.length === 1 ? "row needs" : "rows need") + " a status");
+      if (missingLocations.length) parts.push(missingLocations.length + " reported " + (missingLocations.length === 1 ? "item needs" : "items need") + " a manuscript location");
+
+      if (parts.length) {
+        banner.textContent = "Please complete the checklist before downloading: " + parts.join("; ") + ".";
+        banner.hidden = false;
+        const missingRow = missingStatuses[0] || missingLocations[0];
+        const firstTarget = missingDetails.length ? document.getElementById(missingDetails[0]) : document.getElementById("item-" + missingRow.id);
+        if (firstTarget) {
+          firstTarget.scrollIntoView({ behavior: "smooth", block: "center" });
+          if (typeof firstTarget.focus === "function") firstTarget.focus({ preventScroll: true });
+        }
+        return false;
+      }
+      banner.hidden = true;
+      return true;
+    }
+
+    function statusLabel(status) {
+      return { reported: "Reported", "not-reported": "Not reported", "not-applicable": "Not applicable" }[status] || "";
+    }
+
+    function buildDocument() {
+      function detail(label) { return esc(state.details[label] || "—"); }
+      const sections = CHECKLIST.map(function(section) {
+        const rows = section.rows.map(function(row) {
+          const response = responseFor(row.id);
+          return '<tr><td class="number">' + esc(row.id) + '</td>' +
+            '<td><strong>' + esc(row.item) + '</strong><br>' + esc(row.text) + '</td>' +
+            '<td>' + esc(statusLabel(response.status)) + '</td>' +
+            '<td>' + esc(response.location || "—") + '</td>' +
+            '<td>' + esc(response.notes || "—") + '</td></tr>';
+        }).join("");
+        return '<tr class="document-section"><td colspan="5">' + esc(section.section) + '</td></tr>' + rows;
+      }).join("");
+
+      return '<!doctype html><html><head><meta charset="utf-8"><title>STROBE-MetEpi completed checklist</title>' +
+        '<style>@page{size:A4 landscape;margin:1.4cm}body{font-family:Arial,sans-serif;color:#17202a;font-size:9pt;line-height:1.35}' +
+        'h1{color:#a80f16;margin:0 0 4pt;font-size:22pt}.subtitle{color:#5f6b7a;margin:0 0 16pt}.document-notice{margin:12pt 0;padding:8pt 10pt;border:1px solid #f2c4c6;background:#fff7f7}' +
+        '.details{margin:0 0 14pt;border-collapse:collapse}.details td{padding:3pt 14pt 3pt 0;border:0}table.checklist{width:100%;border-collapse:collapse;table-layout:fixed}' +
+        'th{padding:6pt;color:white;background:#a80f16;text-align:left;font-size:8pt}td{padding:6pt;border:1px solid #cfd5dc;vertical-align:top}.number{width:5%;font-weight:bold;color:#a80f16}' +
+        '.recommendation{width:47%}.status{width:11%}.location{width:17%}.notes{width:20%}.document-section td{padding:6pt;color:#a80f16;background:#fff0f0;font-weight:bold;text-transform:uppercase;letter-spacing:.05em}' +
+        '.document-footer{margin-top:12pt;color:#65717f;font-size:8pt}</style></head><body>' +
+        '<h1>STROBE-MetEpi completed checklist</h1><p class="subtitle">Recommended items to address in reports of studies of metabolomic epidemiology</p>' +
+        '<table class="details"><tr><td><strong>Manuscript:</strong> ' + detail("manuscript-title") + '</td></tr>' +
+        '<tr><td><strong>Corresponding author:</strong> ' + detail("corresponding-author") + '</td><td><strong>Date:</strong> ' + detail("completion-date") + '</td></tr>' +
+        '<tr><td><strong>Target journal:</strong> ' + detail("target-journal") + '</td><td><strong>Manuscript ID:</strong> ' + detail("manuscript-id") + '</td></tr></table>' +
+        '<div class="document-notice"><strong>Reporting aid, not a scoring instrument.</strong> This checklist supports complete and transparent reporting. It does not assess study quality or prescribe how research should be conducted.</div>' +
+        '<table class="checklist"><thead><tr><th class="number">Item</th><th class="recommendation">Recommendation</th><th class="status">Status</th><th class="location">Where reported</th><th class="notes">Notes</th></tr></thead><tbody>' +
+        sections + '</tbody></table><p class="document-footer">Generated with the interactive STROBE-MetEpi reporting checklist.</p></body></html>';
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("show");
+      window.clearTimeout(toastTimer);
+      toastTimer = window.setTimeout(function() { toast.classList.remove("show"); }, 2600);
+    }
+
+    function downloadChecklist() {
+      activeFilter = "all";
+      searchTerm = "";
+      document.getElementById("checklist-search").value = "";
+      document.querySelectorAll(".filter-button").forEach(function(button) {
+        button.classList.toggle("active", button.dataset.filter === "all");
+      });
+      renderChecklist();
+      if (!validateChecklist()) return;
+
+      const blob = new Blob(["\ufeff", buildDocument()], { type: "application/msword;charset=utf-8" });
+      const link = document.createElement("a");
+      const title = (state.details["manuscript-title"] || "completed-checklist")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "").slice(0, 48);
+      const objectUrl = URL.createObjectURL(blob);
+      link.href = objectUrl;
+      link.download = "STROBE-MetEpi_" + (title || "completed-checklist") + ".doc";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      window.setTimeout(function() { URL.revokeObjectURL(objectUrl); }, 1000);
+      showToast("Completed checklist downloaded.");
+    }
+
+    function resetChecklist() {
+      if (!window.confirm("Reset all manuscript details and checklist responses saved in this browser?")) return;
+      state = emptyState();
+      try { localStorage.removeItem(STORAGE_KEY); } catch (error) {}
+      DETAILS.forEach(function(id) { document.getElementById(id).value = state.details[id] || ""; });
+      activeFilter = "all";
+      searchTerm = "";
+      document.getElementById("checklist-search").value = "";
+      document.querySelectorAll(".filter-button").forEach(function(button) {
+        button.classList.toggle("active", button.dataset.filter === "all");
+      });
+      document.getElementById("validation-banner").hidden = true;
+      renderChecklist();
+      updateProgress();
+      showToast("Checklist reset.");
+    }
+
+    document.querySelectorAll(".filter-button").forEach(function(button) {
+      button.addEventListener("click", function() {
+        activeFilter = button.dataset.filter;
+        document.querySelectorAll(".filter-button").forEach(function(item) {
+          item.classList.toggle("active", item === button);
+        });
+        renderChecklist();
+      });
+    });
+    document.getElementById("checklist-search").addEventListener("input", function(event) {
+      searchTerm = event.target.value.trim().toLowerCase();
+      renderChecklist();
+    });
+    document.getElementById("download-button").addEventListener("click", downloadChecklist);
+    document.getElementById("reset-button").addEventListener("click", resetChecklist);
+    const siteSearch = document.querySelector(".search");
+    if (siteSearch) siteSearch.addEventListener("submit", function(event) { event.preventDefault(); });
+
+    hydrateDetails();
+    renderChecklist();
+    updateProgress();
+  </script>
+</body>
+</html>
