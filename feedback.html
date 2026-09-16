@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Submit feedback on the STROBE-MetEpi reporting guideline." />
+  <title>Submit feedback | STROBE-MetEpi</title>
+  <style>
+    :root {
+      --red: #d71920;
+      --red-dark: #a80f16;
+      --ink: #17202a;
+      --muted: #5f6b7a;
+      --line: #e6e9ee;
+      --soft: #f7f8fa;
+      --max: 900px;
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: white;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+
+    a { color: var(--red-dark); }
+    .container { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; }
+
+    .site-header {
+      padding: 24px 0;
+      color: white;
+      background: linear-gradient(135deg, #e21b23, #c9131b);
+    }
+
+    .header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand { color: white; font-size: 28px; font-weight: 800; text-decoration: none; }
+    .back-link { color: white; font-weight: 700; }
+
+    main { padding: 56px 0 72px; }
+    h1 { margin: 0 0 16px; font-size: clamp(36px, 6vw, 58px); line-height: 1; letter-spacing: -.045em; }
+    .lead { max-width: 760px; margin: 0 0 32px; color: var(--muted); font-size: 19px; }
+
+    .form-card {
+      padding: 30px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .field { margin-bottom: 22px; }
+    label, legend { display: block; margin-bottom: 8px; font-weight: 750; }
+    .optional { color: var(--muted); font-size: 14px; font-weight: 500; }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px 14px;
+      color: var(--ink);
+      background: white;
+      border: 1px solid #cfd5dd;
+      border-radius: 10px;
+      font: inherit;
+    }
+
+    textarea { min-height: 170px; resize: vertical; }
+    input:focus, select:focus, textarea:focus { outline: 3px solid rgba(215, 25, 32, .15); border-color: var(--red); }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      color: white;
+      background: var(--red);
+      border: 1px solid var(--red);
+      border-radius: 999px;
+      box-shadow: 0 10px 24px rgba(215, 25, 32, .18);
+      font: inherit;
+      font-weight: 750;
+      cursor: pointer;
+    }
+
+    .note { margin: 18px 0 0; color: var(--muted); font-size: 14px; }
+    .direct-email { margin-top: 28px; padding: 18px 20px; border-left: 5px solid var(--red); background: #fff7f7; border-radius: 12px; }
+    .footer { padding: 32px 0; color: #c9d1dc; background: #121820; }
+    .footer a { color: white; }
+
+    @media (max-width: 600px) {
+      .container { width: min(var(--max), calc(100% - 36px)); }
+      .header-row { align-items: flex-start; flex-direction: column; gap: 8px; }
+      main { padding-top: 42px; }
+      .form-card { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-row">
+      <a class="brand" href="index.html">STROBE-MetEpi</a>
+      <a class="back-link" href="index.html">Back to the homepage</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <h1>Submit feedback</h1>
+      <p class="lead">
+        We welcome comments on checklist wording, missing guidance, implementation
+        challenges, and suggestions for future revisions.
+      </p>
+
+      <form class="form-card" id="feedback-form">
+        <div class="field">
+          <label for="item">Checklist item <span class="optional">(optional)</span></label>
+          <input id="item" name="item" type="text" placeholder="For example, Item 12b" />
+        </div>
+
+        <div class="field">
+          <label for="type">Type of feedback</label>
+          <select id="type" name="type" required>
+            <option value="">Please select</option>
+            <option>Checklist wording</option>
+            <option>Missing guidance</option>
+            <option>Implementation challenge</option>
+            <option>Suggestion for a future revision</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="comment">Comment or suggested revision</label>
+          <textarea id="comment" name="comment" required></textarea>
+        </div>
+
+        <div class="field">
+          <label for="role">Your role <span class="optional">(optional)</span></label>
+          <select id="role" name="role">
+            <option value="">Please select</option>
+            <option>Author</option>
+            <option>Reviewer</option>
+            <option>Editor</option>
+            <option>Researcher</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="name">Name <span class="optional">(optional)</span></label>
+          <input id="name" name="name" type="text" autocomplete="name" />
+        </div>
+
+        <div class="field">
+          <label for="email">Email address <span class="optional">(optional)</span></label>
+          <input id="email" name="email" type="email" autocomplete="email" />
+        </div>
+
+        <button class="button" type="submit">Prepare feedback email</button>
+        <p class="note">Submitting this form opens your email application. You can review the message before sending it.</p>
+      </form>
+
+      <p class="direct-email">
+        If the form does not open your email application, write directly to
+        <a href="mailto:hprke@channing.harvard.edu">hprke@channing.harvard.edu</a>.
+      </p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">STROBE-MetEpi · Reporting Guidelines for Metabolomic Epidemiology</div>
+  </footer>
+
+  <script>
+    document.getElementById("feedback-form").addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const data = new FormData(event.currentTarget);
+      const item = data.get("item") || "Not specified";
+      const type = data.get("type") || "Not specified";
+      const comment = data.get("comment") || "";
+      const role = data.get("role") || "Not specified";
+      const name = data.get("name") || "Not provided";
+      const email = data.get("email") || "Not provided";
+
+      const subject = "STROBE-MetEpi feedback" + (item !== "Not specified" ? " – " + item : "");
+      const body = [
+        "Checklist item: " + item,
+        "Type of feedback: " + type,
+        "Role: " + role,
+        "Name: " + name,
+        "Email: " + email,
+        "",
+        "Comment or suggested revision:",
+        comment
+      ].join("\n");
+
+      window.location.href = "mailto:hprke@channing.harvard.edu?subject=" +
+        encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+    });
+  </script>
+</body>
+</html>
